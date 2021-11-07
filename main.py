@@ -1,4 +1,5 @@
-from tkinter import * 
+from tkinter import *
+import mypeople 
 import datetime
 date = datetime.date.today()
 
@@ -26,7 +27,7 @@ class Application(object):
 
         #First Button.....
         self.btn1Icon=PhotoImage(file='icons/man.png')
-        self.personBtn = Button(self.bottom,text='  My People       ', font='arial 12 bold')
+        self.personBtn = Button(self.bottom,text='  My People       ', font='arial 12 bold',command=self.openMyPeople)
         self.personBtn.config(image=self.btn1Icon,compound=LEFT)
         self.personBtn.place(x=250,y=20)
 
@@ -42,6 +43,8 @@ class Application(object):
         self.personBtn.config(image=self.btn3Icon,compound=LEFT)
         self.personBtn.place(x=250,y=140)
 
+    def openMyPeople(self):
+        people = mypeople.MyPeople()
 
 
 def main():
