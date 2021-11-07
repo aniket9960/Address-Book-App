@@ -23,7 +23,24 @@ class Application(object):
         self.date_lbl = Label(self.top,text="Today's Date: "+str(date),font='arial 12 bold',bg='white',fg='#ffa500')
         self.date_lbl.place(x=450,y=5)
 
-        
+
+        #First Button.....
+        self.btn1Icon=PhotoImage(file='icons/man.png')
+        self.personBtn = Button(self.bottom,text='  My People       ', font='arial 12 bold')
+        self.personBtn.config(image=self.btn1Icon,compound=LEFT)
+        self.personBtn.place(x=250,y=20)
+
+        #Second Button.....
+        self.btn2Icon=PhotoImage(file='icons/add.png')
+        self.personBtn = Button(self.bottom,text='  Add People     ', font='arial 12 bold')
+        self.personBtn.config(image=self.btn2Icon,compound=LEFT)
+        self.personBtn.place(x=250,y=80)
+
+        #Third Button
+        self.btn3Icon=PhotoImage(file='icons/info.png')
+        self.personBtn = Button(self.bottom,text='  About Us         ', font='arial 12 bold')
+        self.personBtn.config(image=self.btn3Icon,compound=LEFT)
+        self.personBtn.place(x=250,y=140)
 
 
 
