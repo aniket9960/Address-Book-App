@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import Toplevel
 import sqlite3
 from tkinter import font
-
+import addpeople
 con = sqlite3.connect('database.db')
 cur = con.cursor()
 
@@ -21,10 +21,10 @@ class MyPeople(Toplevel):
         self.bottom.pack(fill=X)
 
         #Heading........
-        self.top_Image=PhotoImage(file='icons/book.png')
+        self.top_Image=PhotoImage(file='icons/person_icon.png')
         self.top_Image_Label = Label(self.top,image=self.top_Image,bg='white')
         self.top_Image_Label.place(x=120,y=10)
-        self.heading = Label(self.top,text="My Address Book",font='arial 15 bold',fg='#003f8a',bg='white')
+        self.heading = Label(self.top,text="My Persons",font='arial 15 bold',fg='#003f8a',bg='white')
         self.heading.place(x=260,y=60)
         
         #Scrollbar....
@@ -38,7 +38,7 @@ class MyPeople(Toplevel):
         self.sb.grid(row=0,column=1,sticky=N+S)
 
         #Buttons......
-        btnAdd = Button(self.bottom,text="Add",width=12,font='Sans 12 bold')
+        btnAdd = Button(self.bottom,text="Add",width=12,font='Sans 12 bold', command=self.funcaddPeople)
         btnAdd.grid(row=0,column=2,sticky=N,padx=10,pady=10)
 
         btnUpdate = Button(self.bottom,text="Update",width=12,font='Sans 12 bold')
@@ -49,3 +49,8 @@ class MyPeople(Toplevel):
 
         btnDelete = Button(self.bottom,text="Delete",width=12,font='Sans 12 bold')
         btnDelete.grid(row=0,column=2,sticky=N,padx=10,pady=130)
+
+        
+    def funcaddPeople(self):
+        add_page = addpeople.AddPeople()
+        
