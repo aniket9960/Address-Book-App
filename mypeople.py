@@ -52,5 +52,6 @@ class MyPeople(Toplevel):
 
         
     def funcaddPeople(self):
+        self.destroy()
         add_page = addpeople.AddPeople()
         
