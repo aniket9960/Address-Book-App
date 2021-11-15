@@ -31,11 +31,21 @@ class MyPeople(Toplevel):
         self.sb = Scrollbar(self.bottom,orient=VERTICAL)
 
         #ListBox.......
-        self.listbox= Listbox(self.bottom,width=60,height=31)
+        self.listbox= Listbox(self.bottom,width=60,height=31, font="Sans 10")
         self.listbox.grid(row=0,column=0,padx=(40,0))
         self.sb.config(command= self.listbox.yview)
         self.listbox.config(yscrollcommand=self.sb.set)
         self.sb.grid(row=0,column=1,sticky=N+S)
+
+        persons=cur.execute("select * from persons").fetchall()
+        print(persons)
+        count = 0
+        for person in persons:
+            
+            self.listbox.insert(count,str(person[0])+"-"+person[1]+" "+person[2])
+            count +=1
+
+
 
         #Buttons......
         btnAdd = Button(self.bottom,text="Add",width=12,font='Sans 12 bold', command=self.funcaddPeople)
