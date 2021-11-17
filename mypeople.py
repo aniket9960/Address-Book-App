@@ -57,7 +57,7 @@ class MyPeople(Toplevel):
         btnDisplay = Button(self.bottom,text="Display",width=12,font='Sans 12 bold', command=self.funcDisplay)
         btnDisplay.grid(row=0,column=2,sticky=N,padx=10,pady=90)
 
-        btnDelete = Button(self.bottom,text="Delete",width=12,font='Sans 12 bold')
+        btnDelete = Button(self.bottom,text="Delete",width=12,font='Sans 12 bold', command=self.funcDelete)
         btnDelete.grid(row=0,column=2,sticky=N,padx=10,pady=130)
 
         
@@ -83,6 +83,28 @@ class MyPeople(Toplevel):
         displaypage = Display()
         self.destroy()
 
+    def funcDelete(self):
+        global person_id
+        selected = self.listbox.curselection()
+        person = self.listbox.get(selected)
+        person_id = person.split("-")[0]
+
+        mbox = messagebox.askquestion("warning","Are you sur to delete ?",icon='warning')
+        if mbox == 'yes':
+            try :
+                query = "delete from persons where person_id=?"
+                cur.execute(query,(person_id))
+                con.commit()
+                self.destroy()
+                messagebox.showinfo("Success","Contact Deleted Successfully",icon='info')
+                MyPeople()
+            
+        
+            except:
+                messagebox.showerror("Failed","Unable to delete",icon='error')
+                self.destroy()
+
+        
     
 
 class Update(Toplevel):
