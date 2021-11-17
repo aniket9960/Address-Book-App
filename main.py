@@ -1,5 +1,5 @@
 from tkinter import *
-import mypeople,addpeople
+import mypeople,addpeople,about
 import datetime
 date = datetime.date.today()
 
@@ -33,15 +33,15 @@ class Application(object):
 
         #Second Button.....
         self.btn2Icon=PhotoImage(file='icons/add.png')
-        self.personBtn = Button(self.bottom,text='  Add People     ', font='arial 12 bold', command=self.funcAddPeople)
-        self.personBtn.config(image=self.btn2Icon,compound=LEFT)
-        self.personBtn.place(x=250,y=80)
+        self.addpersonBtn = Button(self.bottom,text='  Add People     ', font='arial 12 bold', command=self.funcAddPeople)
+        self.addpersonBtn.config(image=self.btn2Icon,compound=LEFT)
+        self.addpersonBtn.place(x=250,y=80)
 
         #Third Button
         self.btn3Icon=PhotoImage(file='icons/info.png')
-        self.personBtn = Button(self.bottom,text='  About Us         ', font='arial 12 bold')
-        self.personBtn.config(image=self.btn3Icon,compound=LEFT)
-        self.personBtn.place(x=250,y=140)
+        self.aboutBtn = Button(self.bottom,text='  About Us         ', font='arial 12 bold')
+        self.aboutBtn.config(image=self.btn3Icon,compound=LEFT,command=about.main)
+        self.aboutBtn.place(x=250,y=140)
 
     def openMyPeople(self):
         people = mypeople.MyPeople()
